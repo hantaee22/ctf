@@ -1,0 +1,6 @@
+perl언어의 2인자 open함수의 취약점인 open함수로 받는 문자열 마지막이
+파이프(|)로 끝나면 명령어 실행으로 인식하는 취약점 이용
+1. curl명령어로 flag.txt를 읽어오는 명령어를 작성해보자
+2. 그냥 bin/cat/flag.txt 를 하면 ./files//bin/cat /flag.txt| 가 되어서 파일경로로 인식함 → 개행문자 %0a 로 명령실행으로 인식하도록 해야함
+3. 도커파일을 보면 flag.txt의 파일명에 md5sum 값을 붙임 → 와일드 카드를 이용하여 flag로 시작하는 파일을 뽑아오면됨
+curl "http://pearl.chal.imaginaryctf.org./x%0a/bin/cat%20/flag-*.txt%7C
